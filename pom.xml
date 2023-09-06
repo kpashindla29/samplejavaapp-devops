@@ -16,7 +16,7 @@
 	<jacoco.version>0.8.6</jacoco.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-	<pmd.plugin.version>6.6.0</pmd.plugin.version>    
+	<pmd.plugin.version>3.13.0</pmd.plugin.version>    
     </properties>
 
     <repositories>
