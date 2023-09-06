@@ -16,7 +16,7 @@
 	<jacoco.version>0.8.6</jacoco.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-	    
+	<pmd.plugin.version>3.13.0</pmd.plugin.version>    
     </properties>
 
     <repositories>
@@ -325,7 +325,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-pmd-plugin</artifactId>
-                        <version>3.2</version>
+                        <version>${pmd.plugin.version}</version>
                         <configuration>
                             <targetJdk>11</targetJdk>
                             <aggregate>true</aggregate>
