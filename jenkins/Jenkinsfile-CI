@@ -42,7 +42,7 @@ pipeline {
 			execPattern: '**/target/**.exec',
 			classPattern: '**/target/classes',
 			sourcePattern: '**/src',
-			inclusionPattern: 'com/devops/**',
+			inclusionPattern: 'com/devopsdemo/**',
 			changeBuildStatus: true
 		    )
 			
