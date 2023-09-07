@@ -37,7 +37,15 @@ pipeline {
                  }
 	   post {
                success {
-                   jacoco buildOverBuild: true, deltaBranchCoverage: '20', deltaClassCoverage: '20', deltaComplexityCoverage: '20', deltaInstructionCoverage: '20', deltaLineCoverage: '20', deltaMethodCoverage: '20'
+
+		jacoco(
+			execPattern: '**/target/**.exec',
+			classPattern: '**/target/classes',
+			sourcePattern: '**/src',
+			inclusionPattern: 'com/devops/**',
+			changeBuildStatus: true
+		    )
+			
                }
            }			
         }
