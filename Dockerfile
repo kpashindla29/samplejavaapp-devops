@@ -25,7 +25,7 @@ RUN rm -rf /tmp/apache-tomcat-${TOMCAT_VERSION}
 
 RUN rm -rf /tmp/tomcat.tar.gz
 
-COPY target/sampleapp.war /usr/local/tomcat/webapps
+COPY target/sampleapp.war /opt/tomcat/webapps
 EXPOSE 8080
 #CMD /usr/local/tomcat/bin/catalina.sh run
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
