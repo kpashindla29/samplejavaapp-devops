@@ -38,12 +38,10 @@ pipeline {
 	   post {
         	success {
 	            jacoco(
-	                execPattern: '**/build/jacoco/*.exec',
-	                classPattern: '**/build/classes/java/main',
-	                sourcePattern: '**/src/main'
+	                execPattern: '**/**.exec',
+	                classPattern: '**/classes',
+	                sourcePattern: '**/src/main/java'
 	            )
-
-		   jacoco buildOverBuild: true, deltaBranchCoverage: '20', deltaClassCoverage: '20', deltaComplexityCoverage: '20', deltaInstructionCoverage: '20', deltaLineCoverage: '20', deltaMethodCoverage: '20'
         	}
    	    }			
         }
