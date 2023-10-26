@@ -25,7 +25,7 @@ pipeline {
         }
         stage('unit-test') {
 	   steps {
-                echo 'codereview..'
+                echo 'unit testing..'
 		bat label: '', script: 'mvn test'
            }
 	   post {
