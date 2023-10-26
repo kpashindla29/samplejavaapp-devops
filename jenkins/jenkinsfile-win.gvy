@@ -19,7 +19,7 @@ pipeline {
            }
 	   post {
                success {
-                   pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '**/pmd.xml', unHealthy: ''
+                   recordIssues enabledForFailure: true, tool: pmdParser(pattern: '**/target/pmd.xml')
                }
            }		
         }
@@ -37,11 +37,15 @@ pipeline {
         stage('metric-check') {
 	   steps {
                 echo 'unit test..'
-		bat label: '', script: 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+		bat label: '', script: 'mvn verify'
            }
 	   post {
                success {
-	           cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'target/site/cobertura/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false                  
+	           jacoco(
+	                execPattern: '**/**.exec',
+	                classPattern: '**/classes',
+	                sourcePattern: '**/src/main/java'
+	            )
                }
            }		
         }
