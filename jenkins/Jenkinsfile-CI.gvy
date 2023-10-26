@@ -42,6 +42,8 @@ pipeline {
 	                classPattern: '**/build/classes/java/main',
 	                sourcePattern: '**/src/main'
 	            )
+
+		   jacoco buildOverBuild: true, deltaBranchCoverage: '20', deltaClassCoverage: '20', deltaComplexityCoverage: '20', deltaInstructionCoverage: '20', deltaLineCoverage: '20', deltaMethodCoverage: '20'
         	}
    	    }			
         }
