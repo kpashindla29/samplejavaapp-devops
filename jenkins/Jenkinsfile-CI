@@ -36,18 +36,14 @@ pipeline {
 	        sh script: '/opt/maven/bin/mvn verify'
                  }
 	   post {
-               success {
-
-		jacoco(
-			execPattern: '**/target/**.exec',
-			classPattern: '**/target/classes',
-			sourcePattern: '**/src',
-			inclusionPattern: 'com/devopsdemo/**',
-			changeBuildStatus: true
-		    )
-			
-               }
-           }			
+        	success {
+	            jacoco(
+	                execPattern: '**/build/jacoco/*.exec',
+	                classPattern: '**/build/classes/java/main',
+	                sourcePattern: '**/src/main'
+	            )
+        	}
+   	    }			
         }
         stage('package') {
 	   steps {
