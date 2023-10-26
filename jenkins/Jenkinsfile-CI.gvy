@@ -53,7 +53,7 @@ pipeline {
         }
         stage('build & push docker image') {
 	         steps {
-              withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/login') {
+              docker.withRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/login') {
                     sh script: 'cd  $WORKSPACE'
                     sh script: 'docker build --file Dockerfile --tag docker.io/kpashindla/mysampleapp:$BUILD_NUMBER .'
                     sh script: 'docker push docker.io/kpashindla/mysampleapp:$BUILD_NUMBER'
