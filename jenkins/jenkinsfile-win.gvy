@@ -8,7 +8,7 @@ pipeline {
         stage('compile') {
 	   steps {
                 echo 'compiling..'
-		git url: 'https://github.com/kpashindla29/samplejavaapp-devops.git'
+		git url: 'https://github.com/kpashindla29/samplejavaapp-devops'
 		bat label: '', script: 'mvn compile'
            }
         }
