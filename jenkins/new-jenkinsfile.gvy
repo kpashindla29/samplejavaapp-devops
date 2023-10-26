@@ -8,7 +8,7 @@ pipeline {
         stage('compile') {
 		   steps {
 					echo 'compiling..'
-					git url: 'https://github.com/kpashindla29/spring-boot-restapi-for-ec2.git'
+					git url: 'https://github.com/kpashindla29/samplejavaapp-devops.git'
 					sh 'mvn compile'
 				 }
 		}
