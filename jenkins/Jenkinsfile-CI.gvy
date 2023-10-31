@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-      DOCKER_CREDS = credentials('docker_pwd') 
+      DOCKER_CREDS = credentials('DOCKER_HUB_LOGIN') 
     }
     stages {
         stage('compile') {
@@ -59,7 +59,7 @@ pipeline {
 	      steps {
                       	sh script: 'cd  $WORKSPACE'
 			sh script: 'docker build --file Dockerfile --tag docker.io/kpashindla/mysampleapp:$BUILD_NUMBER .'
-                        sh script: 'docker login -u kpashindla -p $DOCKER_HUB_PWD'
+                        sh script: 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
 		        sh script: 'docker push docker.io/kpashindla/mysampleapp:$BUILD_NUMBER'
 		    }
       }
