@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-      DOCKER_HUB_PWD = credentials('docker_pwd') 
+      DOCKER_CREDS = credentials('docker_pwd') 
     }
     stages {
         stage('compile') {
