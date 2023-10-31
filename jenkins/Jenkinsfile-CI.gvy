@@ -54,7 +54,7 @@ pipeline {
 
      stage('push docker image') {
 	      steps {
-		      withCredentials([string(credentialsId: 'DOCKER_HUB_PWD', variable: 'DOCKER_HUB_PWD')]) {
+		      withCredentials([string(credentialsId: 'docker_pwd', variable: 'DOCKER_HUB_PWD')]) {
                                 echo "${DOCKER_HUB_PWD}"
                                 sh "docker login -u kpashindla -p ${DOCKER_HUB_PWD}"
 		      }
