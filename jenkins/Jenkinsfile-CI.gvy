@@ -56,7 +56,7 @@ pipeline {
 	      steps {
 		      withCredentials([string(credentialsId: 'docker_pwd', variable: 'DOCKER_HUB_PWD')]) {
                                 echo "${DOCKER_HUB_PWD}"
-                                sh "docker login -u kpashindla -p ${DOCKER_HUB_PWD}"
+                                sh "docker login -u kpashindla -p Krish$175"
 		      }
 		      sh 'docker push kpashindla/mysampleapp:$BUILD_NUMBER'
 		    }
