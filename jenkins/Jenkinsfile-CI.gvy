@@ -57,10 +57,10 @@ pipeline {
 
      stage('push docker image') {
 	      steps {
-                       sh 'cd $WORKSPACE'
-		       sh 'docker build -f Dockerfile -t kpashindla/mysampleapp:$BUILD_NUMBER' .
-		       sh 'docker login -u kpashindla -p $DOCKER_HUB_PWD'
-		       sh 'docker push kpashindla/mysampleapp:$BUILD_NUMBER'
+                      	sh script: 'cd  $WORKSPACE'
+			sh script: 'docker build --file Dockerfile --tag docker.io/kpashindla/mysampleapp:$BUILD_NUMBER .'
+                        sh script: 'docker login -u kpashindla -p $DOCKER_HUB_PWD'
+		        sh script: 'docker push docker.io/kpashindla/mysampleapp:$BUILD_NUMBER'
 		    }
       }
            
