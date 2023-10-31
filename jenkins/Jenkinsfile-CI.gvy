@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-      DOCKER_HUB_PWD = credentials('docker_pwd') // Secret value is 'sec%ret'
+      DOCKER_HUB_PWD = credentials('docker_pwd') 
     }
     stages {
         stage('compile') {
@@ -57,7 +57,7 @@ pipeline {
 
      stage('push docker image') {
 	      steps {
-		       sh 'docker login -u kpashindla -p %DOCKER_HUB_PWD%'
+		       sh 'docker login -u kpashindla -p $DOCKER_HUB_PWD'
 		       sh 'docker push kpashindla/mysampleapp:$BUILD_NUMBER'
 		    }
       }
