@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+      DOCKER_CREDS = credentials('DOCKER_HUB_LOGIN') 
+    }
     tools { 
       maven 'MAVEN_HOME' 
       jdk 'JAVA_HOME' 
@@ -55,5 +58,14 @@ pipeline {
 		bat label: '', script: 'mvn package'	
            }		
         }
+    stage('push docker image') {
+	      steps {
+                      	sh script: 'cd  $WORKSPACE'
+			sh script: 'docker build --file Dockerfile --tag docker.io/kpashindla/mysampleapp:$BUILD_NUMBER .'
+                        sh script: 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
+		        sh script: 'docker push docker.io/kpashindla/mysampleapp:$BUILD_NUMBER'
+		    }
+      }
+
     }
 }
