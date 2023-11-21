@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: samplejavaapp
-        image: lerndevops/samplejavaapp:bno
+        image: kpashindla/mysampleapp
         ports:
         - name: http
           containerPort: 8080
@@ -33,4 +33,4 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
-    nodePort: 30002
+ 
