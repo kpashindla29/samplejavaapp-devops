@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    environment {
+    /*environment {
       DOCKER_CREDS = credentials('DOCKER_HUB_LOGIN') 
-    }
+    }*/
     stages {
         stage('compile') {
 	   steps {
