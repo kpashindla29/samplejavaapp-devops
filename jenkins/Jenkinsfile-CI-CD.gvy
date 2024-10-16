@@ -54,7 +54,7 @@ pipeline {
 		sh script: '/opt/maven/bin/mvn package'	
            }		
         }
-
+    /*
      stage('push docker image') {
 	      steps {
                       	sh script: 'cd  $WORKSPACE'
@@ -63,7 +63,7 @@ pipeline {
 		        sh script: 'docker push docker.io/kpashindla/mysampleapp:$BUILD_NUMBER'
 		    }
       }
-
+    */
       /* stage('deploy-QA') {
 	         steps {
                     sh script: 'ansible-playbook --inventory /tmp/myinv $WORKSPACE/deploy/deploy-kube.yml --extra-vars "env=qa build=$BUILD_NUMBER"'
