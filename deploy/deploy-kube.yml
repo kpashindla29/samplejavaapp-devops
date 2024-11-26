@@ -3,26 +3,26 @@
   tasks: 
     - name: Deploying Application pods...
       shell: | 
-         if [ `sudo -E kubectl get deployment | grep -v NAME | awk '{print $1}' | grep sampleapp | wc -l` -gt 0 ]; then  
+         if [ `kubectl get deployment | grep -v NAME | awk '{print $1}' | grep sampleapp | wc -l` -gt 0 ]; then  
             echo "deleteing previous application deployment"
-            sudo -E kubectl delete deployment `sudo -E kubectl get deployment | grep -v NAME | awk '{print $1}' | grep sampleapp`
+            kubectl delete deployment `kubectl get deployment | grep -v NAME | awk '{print $1}' | grep sampleapp`
             echo "creating new application deployment"
-            sudo -E kubectl create deployment sampleapp --image=kpashindla/mysampleapp:{{ build }}
+            kubectl create deployment sampleapp --image=kpashindla/mysampleapp:{{ build }}
          else 
             echo "Deploying Sampleapp Application"
-            sudo -E kubectl create deployment sampleapp --image=kpashindla/mysampleapp:{{ build }}
+            kubectl create deployment sampleapp --image=kpashindla/mysampleapp:{{ build }}
          fi
     - name: deploying service
       shell: |
-         if [ `sudo -E kubectl get svc | grep sampleapp  | awk '{print $1}' | wc -l` -gt 0 ]; then
+         if [ `kubectl get svc | grep sampleapp  | awk '{print $1}' | wc -l` -gt 0 ]; then
             echo "app service found, No actions taken"
             #kubectl delete svc `kubectl get svc | grep sampleapp | awk '{print $1}'`
          else
             echo "Creating App Services"
-            sudo -E kubectl expose deployment sampleapp --name sampleapp --type NodePort --port 80 --target-port 8080
+            kubectl expose deployment sampleapp --name sampleapp --type NodePort --port 80 --target-port 8080
          fi
     - name: increase replicas 
-      shell: sudo -E kubectl scale deploy sampleapp --replicas=2
+      shell: kubectl scale deploy sampleapp --replicas=2
       
     #- name: deploy app
     #  shell: kubectl create deployment sampleapp --image=lerndevops/samplejavaapp:{{ build }}
