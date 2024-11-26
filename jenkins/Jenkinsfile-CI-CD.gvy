@@ -58,17 +58,17 @@ pipeline {
      stage('push docker image') {
 	      steps {
                       	sh script: 'cd  $WORKSPACE'
-			sh script: 'docker build --file Dockerfile --tag docker.io/kpashindla/new-repo:$BUILD_NUMBER .'
+			sh script: 'docker build --file Dockerfile --tag docker.io/kpashindla/mysampleapp:$BUILD_NUMBER .'
                         sh script: 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
-		        sh script: 'docker push docker.io/kpashindla/new-repo:$BUILD_NUMBER'
+		        sh script: 'docker push docker.io/kpashindla/mysampleapp:$BUILD_NUMBER'
 		    }
       }
     
-      /* stage('deploy-QA') {
+      stage('deploy-QA') {
 	         steps {
                     sh script: 'ansible-playbook --inventory /tmp/myinv $WORKSPACE/deploy/deploy-kube.yml --extra-vars "env=qa build=$BUILD_NUMBER"'
            }		
         }
-      */
+      
     }
 }
